@@ -10,7 +10,7 @@ var cantidadLetras = nombre.length;
 
 var nombreCompleto = `${nombre} ${apellido.toUpperCase()}`;
 
-var str = nombre.substr(1, 2);u
+var str = nombre.substr(1, 2);
 
 var ultimaLetra = nombre.charAt(nombre.length - 1);
 
