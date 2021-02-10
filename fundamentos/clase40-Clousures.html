@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 40 - Clousures</title>
+</head>
+<body>
+    <script>
+
+        const saludar = pais => nombre => console.log(`Hola ${nombre} de ${pais}`);
+        saludar("Argentina")("Sacha");
+        
+        function crearSaludo(finalDeFrase) {
+            return function(nombre) {
+                console.log(`Hola ${nombre} ${finalDeFrase}`)
+            }
+        }
+
+        const saludoArgentino = crearSaludo('che')
+        const saludoMexicano = crearSaludo('wey')
+        const saludoColombiano = crearSaludo('amigo')
+
+        saludoArgentino('Pablo')  // Hola Pablo che
+        saludoMexicano('Pablo')   // Hola Pablo wey
+        saludoColombiano('Pablo') // Hola Pablo amigo
+
+    </script>
+</body>
+</html>
