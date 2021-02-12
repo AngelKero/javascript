@@ -134,7 +134,7 @@ class Juego{
     }
 }
 
-//OnClick
+// * OnClick
 function empezarJuego() {
     window.juego = new Juego();  
 }
