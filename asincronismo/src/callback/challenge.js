@@ -1,5 +1,5 @@
-//let XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest; 
-import { XMLHttpRequest } from 'xmlhttprequest';
+let XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest; 
+//import { XMLHttpRequest } from 'xmlhttprequest';
 
 let API = 'https://rickandmortyapi.com/api/character/';
 
@@ -26,7 +26,7 @@ fetchData(API, (error1, data1) => {
         if (error2) return console.error(error2);
         fetchData(data2.origin.url, (error3, data3) => {
             if (error3) return console.error(error3);
-            console.log(data3.info.count);
+            //console.log(data3.info.count);
             console.log(data3.name);
             console.log(data3.dimension);
         });
