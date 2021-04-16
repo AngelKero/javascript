@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>call - apply - bind</title>
+</head>
+<body>
+    <a href="/ejercicios/">Go Back</a>
+    <p><em>Abre la consola</em></p>
+
+    <ul>
+        <li><button class="call_to_action">Aprender</button></li>
+        <li><button class="call_to_action">Aprender Más</button></li>
+        <li><button class="call_to_action">¡Nunca pares de aprender!</button></li>
+    </ul>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        // *Establece `this` usando call
+        function saludar() {
+            console.log(`Hola. Soy ${this.name} ${this.apellido}`)
+        }
+        const richard = {
+            name: 'Richard',
+            apellido: "Kaufman Lopez"
+        }
+        //pasas por parametro el objeto que sera this y se ejecuta
+        saludar.call(richard)
+
+        function caminar(metros, direccion) {
+            console.log(`${this.name} camina ${metros} metros hacia el ${direccion}.`)
+        }
+        const luis = {
+            name: 'Luis',
+            apellido: "Villegas"
+        }
+        // pasar mas parametros despues del que define this
+        caminar.call(luis, 400, 'norte');
+
+
+        // *Establece `this` usando apply
+        caminar.apply(luis, [800, 'sur'])
+        //con apply es igual que con call pero pasas los parametros
+        //en un arreglo
+
+        /*
+            Call empieza con 'c' de comas ','
+            Apply empieza con 'a' de arreglo '[]'
+        */
+
+
+        // *Establece `this` usando bind
+        const daniel = {
+            name: 'Daniel',
+            apellido: 'Sanchez'
+        }
+        const danielSaludo = saludar.bind(daniel)
+        danielSaludo();
+
+        const danielCamina = caminar.bind(daniel, 100)
+        danielCamina('este');
+        //bind te crea una nueva funcion que se
+        //puede asignar a una nueva variable,
+        //la cual podemos llamar despues.
+        //Los parametros extra los podemos pasar
+        //de forma parcial.
+
+        const buttons = document.getElementsByClassName('call_to_action');
+        // buttons.forEach((button) => {
+        //     button.onclick = () => alert("Alerta")
+        // })
+        //NodeList
+
+        Array.prototype.forEach.call(buttons, (button) => {
+            button.onclick = () => alert("Alerta")
+        })
+    </script>
+</body>
+</html>

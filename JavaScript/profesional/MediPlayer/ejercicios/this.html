@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This</title>
+</head>
+<body>
+    <a href="/ejercicios/">Go Back</a>
+    <p><em>Abre la consola</em></p>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        //This en el scope global
+        console.log(`This: ${this}`);
+
+        //This en el scope de una funcion
+        function whoIsThis() {
+            return this;
+        }
+
+        console.log(`whoIsThis(): ${whoIsThis()}`);
+        //This en el scope de una funcion en strict mode
+        function whoIsThisStrict() {
+            "use strict";
+            return this;
+        }
+        console.log(`whoIsThisStrict(): ${whoIsThisStrict()}`);
+
+        //This en el contexto de un objeto
+        const person = {
+            name: 'Gabriel',
+            saludar: function () {
+                console.log(`Hola soy ${this.name}`)
+            }
+        }
+        person.saludar()
+
+        //This cuando sacamos una funcion de un objeto
+        const accion = person.saludar;
+        accion();
+
+        //This en el contexto de una clase
+        function Person(name) {
+            // this = {}
+            this.name = name;
+        }
+        Person.prototype.saludar = function() {
+            console.log(`Me llamo ${this.name}`)
+        }
+        const angela = new Person("Angela")
+        angela.saludar()
+
+    </script>
+</body>
+</html>
