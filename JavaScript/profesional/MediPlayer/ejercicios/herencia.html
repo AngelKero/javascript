@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herencia Prototipal</title>
+</head>
+<body>
+    <a href="/ejercicios/">Go Back</a>
+    <p><em>Abre la consola</em></p>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        function Hero(name){
+            this.name = name
+        }
+
+        Hero.prototype.saludar = function () {
+            console.log(`Hola, soy ${this.name}`)
+        }
+
+        const zelda = new Hero('Zelda');
+
+        console.log("Name: " + zelda.name)
+        console.log("Saludar: " + zelda.saludar)
+        console.log("zelda.hasOwnProperty('name'): " + zelda.hasOwnProperty('name'))
+        console.log("zelda.hasOwnProperty('saludar'): " + zelda.hasOwnProperty('saludar'))
+
+    </script>
+</body>
+</html>
