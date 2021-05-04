@@ -1,7 +1,8 @@
 function AutoPlay() {}
 AutoPlay.prototype.run = function (player) {
-    player.mute()
-    player.play()
+    if(!player.muted) player.Muted = true
+
+    player.media.play()
 }
 
 export default AutoPlay
