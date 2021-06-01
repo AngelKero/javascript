@@ -1,51 +1,61 @@
-function MediaPlayer(config) {
-    this.media = config.element
-    this.plugins = config.plugins || []
+class MediaPlayer {
 
-    this._initPlugins()
-}
+    constructor(config) {
+        this.media = config.element
+        this.plugins = config.plugins || []
 
-MediaPlayer.prototype._initPlugins = function () {
-    const player = {
-        play: this.media.play,
-        pause: this.media.pause,
-        media: this.media,
-        get Muted() {
-            return this.media.muted
-        },
-        set Muted(value) {
-            this.media.muted = value
-        }
+        this._initPlugins()
     }
 
-    this.plugins.forEach(plugin => {
-        plugin.run(player)
-    })
-}
+    _initPlugins() {
+        const player = {
+            play: this.media.play,
+            pause: this.media.pause,
+            media: this.media,
+            get Muted() {
+                return this.media.muted
+            },
+            set Muted(value) {
+                this.media.muted = value
+            }
+        }
 
-MediaPlayer.prototype.paused = function () {
-    return this.media.paused
-}
-MediaPlayer.prototype.play = function () {
-    this.media.play()
-}
-MediaPlayer.prototype.pause = function () {
-    this.media.pause()
-}
-MediaPlayer.prototype.muted = function () {
-    return this.media.muted
-}
-MediaPlayer.prototype.mute = function () {
-    this.media.muted = true
-}
-MediaPlayer.prototype.unmute = function () {
-    this.media.muted = false
-}
-MediaPlayer.prototype.getVolume = function () {
-    return this.media.volume
-}
-MediaPlayer.prototype.setVolume = function (selector) {
-    this.media.volume = selector
+        this.plugins.forEach(plugin => {
+            plugin.run(player)
+        })
+    }
+
+    paused() {
+        return this.media.paused
+    }
+
+    play() {
+        this.media.play()
+    }
+
+    pause() {
+        this.media.pause()
+    }
+
+    muted() {
+        return this.media.muted
+    }
+
+    mute() {
+        this.media.muted = true
+    }
+
+    unmute() {
+        this.media.muted = false
+    }
+
+    getVolume() {
+        return this.media.volume
+    }
+
+    setVolume(selector) {
+        this.media.volume = selector
+    }
 }
 
 export default MediaPlayer;
